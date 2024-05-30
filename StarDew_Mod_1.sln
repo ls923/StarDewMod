@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarDew_Mod_1", "StarDew_Mod_1\StarDew_Mod_1.csproj", "{EA917D1F-E775-4BA8-A42E-84246DC65E70}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA917D1F-E775-4BA8-A42E-84246DC65E70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA917D1F-E775-4BA8-A42E-84246DC65E70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA917D1F-E775-4BA8-A42E-84246DC65E70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA917D1F-E775-4BA8-A42E-84246DC65E70}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C58CB2BE-D0F3-485F-B6C7-ACF87754CD33}
+	EndGlobalSection
+EndGlobal

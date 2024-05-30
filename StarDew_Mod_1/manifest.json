@@ -1,0 +1,10 @@
+{
+  "Name": "StarDew_Mod_1",
+  "Author": "ls923",
+  "Version": "1.0.0",
+  "Description": "Test mod",
+  "UniqueID": "ls923.StarDew_Mod_1",
+  "EntryDll": "StarDew_Mod_1.dll",
+  "MinimumApiVersion": "3.0.0",
+  "UpdateKeys": []
+}
