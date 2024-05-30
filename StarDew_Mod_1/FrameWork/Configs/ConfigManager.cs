@@ -1,9 +1,11 @@
 ﻿using StardewModdingAPI;
 using System;
 
-namespace StarDew_Mod_1.FrameWork
+namespace StarDew_Mod_1.FrameWork.Configs
 {
-
+    /// <summary>
+    /// 邮件&配置文件管理类
+    /// </summary>
     public class ConfigManager : Singleton<ConfigManager>
     {
         public MailConfig MailCfg;

@@ -1,4 +1,5 @@
-﻿using StarDew_Mod_1.FrameWork;
+﻿using StarDew_Mod_1.FrameWork.Configs;
+using StarDew_Mod_1.FrameWork.Gifts;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
@@ -23,7 +24,6 @@ namespace StarDew_Mod_1
             ConfigManager.Instance.InitConfig();
 
             // 游戏事件监听
-
             helper.Events.GameLoop.GameLaunched += OnGameLaunched;
 
             helper.Events.Input.ButtonPressed += OnButtonPressed;
@@ -44,8 +44,8 @@ namespace StarDew_Mod_1
         private void OnGameLaunched(object? sender, GameLaunchedEventArgs e)
         {
             //游戏加载完毕 执行mod 初始化
-            BirthdayMessagesManager.Init();
-            GiftManager.Init();
+            //BirthdayMessagesManager.Init();
+            GiftManager.Instance.Init();
 
         }
 

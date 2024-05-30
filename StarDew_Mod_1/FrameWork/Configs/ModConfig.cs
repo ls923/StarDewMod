@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StarDew_Mod_1.FrameWork
+namespace StarDew_Mod_1.FrameWork.Configs
 {
     public class ModConfig
     {
@@ -28,15 +28,16 @@ namespace StarDew_Mod_1.FrameWork
 
         public ModConfig() { }
 
-        public static ModConfig InitConfigs() {
-            if (HappyBirthdayModCore.Configs.doesConfigExist("ModConfig.json"))
+        public static ModConfig InitConfigs()
+        {
+            if (ConfigManager.Instance.IsConfigExist("ModConfig.json"))
             {
-                return HappyBirthdayModCore.Configs.ReadConfig<ModConfig>("ModConfig.json");
+                return ConfigManager.Instance.ReadConfig<ModConfig>("ModConfig.json");
             }
             else
             {
                 ModConfig Config = new ModConfig();
-                HappyBirthdayModCore.Configs.WriteConfig("ModConfig.json", Config);
+                ConfigManager.Instance.WriteConfig("ModConfig.json", Config);
                 return Config;
             }
         }

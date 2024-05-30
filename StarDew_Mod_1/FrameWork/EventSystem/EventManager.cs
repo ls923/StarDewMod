@@ -10,6 +10,9 @@ namespace StarDew_Mod_1.FrameWork.EventSystem
         public object[] evtParams;
     }
 
+    /// <summary>
+    /// 事件管理
+    /// </summary>
     public class EventManager : Singleton<EventManager>
 
     {
