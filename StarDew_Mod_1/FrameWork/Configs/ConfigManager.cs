@@ -1,4 +1,5 @@
-﻿using StardewModdingAPI;
+﻿using StarDew_Mod_1.FrameWork.Core;
+using StardewModdingAPI;
 using System;
 
 namespace StarDew_Mod_1.FrameWork.Configs

@@ -1,11 +1,11 @@
-﻿namespace StarDew_Mod_1.FrameWork
+﻿namespace StarDew_Mod_1.FrameWork.Core
 {
     /// <summary>
     /// c# 单例
     /// </summary>
     public class Singleton<T> where T : new()
     {
-        private static T singleton = default(T);
+        private static T singleton = default;
         private static readonly object _objectLock = new object();
 
         public static T Instance
@@ -19,7 +19,7 @@
                 {
                     if (singleton == null)
                     {
-                        singleton = (default(T) == null) ? Activator.CreateInstance<T>() : default(T); //创建单例的实例
+                        singleton = default(T) == null ? Activator.CreateInstance<T>() : default; //创建单例的实例
                     }
                 }
                 finally

@@ -1,4 +1,5 @@
-﻿using StardewValley;
+﻿using StarDew_Mod_1.FrameWork.Core;
+using StardewValley;
 using static StarDew_Mod_1.FrameWork.Gifts.GiftIDS;
 
 namespace StarDew_Mod_1.FrameWork.Gifts
@@ -27,6 +28,7 @@ namespace StarDew_Mod_1.FrameWork.Gifts
             RegisteredGifts = new Dictionary<string, Item>();
 
             InitGiftIds();
+
         }
 
         private void InitGiftIds()

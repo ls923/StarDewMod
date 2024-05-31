@@ -1,4 +1,6 @@
 ﻿using StarDew_Mod_1.FrameWork.Configs;
+using StarDew_Mod_1.FrameWork.Core;
+using StarDew_Mod_1.FrameWork.EventSystem;
 using StarDew_Mod_1.FrameWork.Gifts;
 using StardewModdingAPI;
 using StardewModdingAPI.Events;
@@ -6,13 +8,13 @@ using StardewValley;
 
 namespace StarDew_Mod_1
 {
-    public class HappyBirthdayMod :Mod
+    public class HappyBirthdayMod : Mod
     {
         private Event _lastEvent = null;
 
         public static HappyBirthdayMod Instance;
 
-     
+
 
         /// <summary>
         /// mod 入口
@@ -32,8 +34,6 @@ namespace StarDew_Mod_1
 
             helper.Events.GameLoop.DayStarted += OnDayStarted;
             helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
-
-            
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace StarDew_Mod_1
             //游戏加载完毕 执行mod 初始化
             //BirthdayMessagesManager.Init();
             GiftManager.Instance.Init();
-
+            GameManager.Instance.Init();
         }
 
         [EventPriority(EventPriority.High)]
@@ -56,6 +56,8 @@ namespace StarDew_Mod_1
                 this.Monitor.Log($"Event {_lastEvent.id} just ended!");
 
             _lastEvent = Game1.CurrentEvent;
+            if (!Context.IsWorldReady)
+                return;
         }
 
         private void OnDayStarted(object? sender, DayStartedEventArgs e)
@@ -70,23 +72,23 @@ namespace StarDew_Mod_1
 
         private void OnButtonPressed(object? sender, ButtonPressedEventArgs e)
         {
-            // ignore if player hasn't loaded a save yet
-
             if (!Context.IsWorldReady)
                 return;
 
             // print button presses to the console window
-            this.Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+            Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
+
+            EventManager.Instance.TriggerEvent<SButton>(ClientEvent.PRESS_BUTTON, e.Button);
         }
 
         internal void RemoveUpdate(Action onUpdate)
         {
-           // throw new NotImplementedException();//
+            // throw new NotImplementedException();//
         }
 
         internal void AddUpdate(Action onUpdate)
         {
-           // throw new NotImplementedException();
+            // throw new NotImplementedException();
         }
     }
 }
