@@ -1,6 +1,4 @@
 ﻿using StarDew_Mod_1.FrameWork.Core;
-using StardewModdingAPI;
-using System;
 
 namespace StarDew_Mod_1.FrameWork.Configs
 {
@@ -9,7 +7,6 @@ namespace StarDew_Mod_1.FrameWork.Configs
     /// </summary>
     public class ConfigManager : Singleton<ConfigManager>
     {
-        public MailConfig MailCfg;
         public ModConfig ModCfg;
 
         public ConfigManager()
@@ -19,9 +16,9 @@ namespace StarDew_Mod_1.FrameWork.Configs
         public virtual void InitConfig()
         {
             ModCfg = ModConfig.InitConfigs();
-            MailCfg = MailConfig.InitConfigs();
         }
 
+        #region Write & Read
         /// <summary>
         /// 文件是否存在
         /// </summary>
@@ -62,5 +59,16 @@ namespace StarDew_Mod_1.FrameWork.Configs
             HappyBirthdayMod.Instance.Helper.Data.WriteJsonFile(GetConfigPath(false, configName), config);
         }
 
+        #endregion
+
+        public void ToggleShowUI()
+        {
+            ModCfg.ShowUI = !ModCfg.ShowUI;
+        }
+
+        public bool IsShowUI()
+        {
+            return ModCfg.ShowUI;
+        }
     }
 }

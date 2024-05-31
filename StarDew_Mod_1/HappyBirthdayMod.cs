@@ -14,8 +14,6 @@ namespace StarDew_Mod_1
 
         public static HappyBirthdayMod Instance;
 
-
-
         /// <summary>
         /// mod 入口
         /// </summary>
@@ -26,14 +24,14 @@ namespace StarDew_Mod_1
             ConfigManager.Instance.InitConfig();
 
             // 游戏事件监听
-            helper.Events.GameLoop.GameLaunched += OnGameLaunched;
+            helper.Events.GameLoop.GameLaunched += OnGameLaunched; // 游戏加载完成
 
-            helper.Events.Input.ButtonPressed += OnButtonPressed;
+            helper.Events.Input.ButtonPressed += OnButtonPressed; // 按钮点击事件
 
-            helper.Events.Display.RenderingActiveMenu += OnRenderingMenu;
+            helper.Events.Display.Rendered += OnRendered; // 渲染事件
 
             helper.Events.GameLoop.DayStarted += OnDayStarted;
-            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked;
+            helper.Events.GameLoop.UpdateTicked += OnUpdateTicked; // update （60次/s）
         }
 
         /// <summary>
@@ -56,8 +54,11 @@ namespace StarDew_Mod_1
                 this.Monitor.Log($"Event {_lastEvent.id} just ended!");
 
             _lastEvent = Game1.CurrentEvent;
-            if (!Context.IsWorldReady)
+            if (Context.IsWorldReady)
+            {
+                GameManager.Instance.Update();
                 return;
+            }
         }
 
         private void OnDayStarted(object? sender, DayStartedEventArgs e)
@@ -65,9 +66,12 @@ namespace StarDew_Mod_1
             Monitor.Log($"{Game1.player.Name} DayStarted {Game1.year}/{Game1.season}/{Game1.dayOfMonth} []", LogLevel.Debug);
         }
 
-        private void OnRenderingMenu(object? sender, RenderingActiveMenuEventArgs e)
+        private void OnRendered(object? sender, RenderedEventArgs e)
         {
-            //Monitor.Log($"{Game1.player.Name} rendering {e.SpriteBatch}.", LogLevel.Debug);
+            if (ConfigManager.Instance.IsShowUI())
+            {
+                GameManager.Instance.DrawOverlay(Game1.spriteBatch, Game1.smallFont);
+            }
         }
 
         private void OnButtonPressed(object? sender, ButtonPressedEventArgs e)
@@ -75,9 +79,7 @@ namespace StarDew_Mod_1
             if (!Context.IsWorldReady)
                 return;
 
-            // print button presses to the console window
-            Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Debug);
-
+            Monitor.Log($"{Game1.player.Name} pressed {e.Button}.", LogLevel.Trace);
             EventManager.Instance.TriggerEvent<SButton>(ClientEvent.PRESS_BUTTON, e.Button);
         }
 

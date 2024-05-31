@@ -1,18 +1,19 @@
 ﻿using StardewModdingAPI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static StarDew_Mod_1.FrameWork.Gifts.GiftIDS;
 
 namespace StarDew_Mod_1.FrameWork.Configs
 {
     public class ModConfig
     {
         /// <summary>
-        /// 显示菜单按钮
+        /// 显示UI按钮
         /// </summary>
         public SButton KeyBinding { get; set; } = SButton.O;
+
+        /// <summary>
+        /// 是否显示 UI
+        /// </summary>
+        public bool ShowUI { get;  set; }  = true;
 
         /// <summary>
         /// 获得NPC祝福 最低NPC 好感等级
@@ -24,6 +25,22 @@ namespace StarDew_Mod_1.FrameWork.Configs
         /// 参加沙龙需要达到好感的村民最低数量 
         /// </summary>
         public int MinimumFriendshipLevelForCommunityBirthdayParty = 2;
+
+        /// <summary>
+        /// 生日时父亲给的钱
+        /// </summary>
+        public int DadBirthdayYearMoneyGivenAmount = 161107;
+
+        /// <summary>
+        /// 生日时母亲给的礼物
+        /// </summary>
+        public int momBirthdayItemGive = (int)GiftId.PinkCake;
+
+        /// <summary>
+        ///  生日时母亲给的礼物数量
+        /// </summary>
+        public int momBirthdayItemGiveStackSize = 1;
+
 
 
         public ModConfig() { }

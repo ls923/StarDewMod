@@ -37,7 +37,7 @@ namespace StarDew_Mod_1.FrameWork.Gifts
             {
                 Item i = new StardewValley.Object(((int)id).ToString(), 1);
                 string uniqueID = "StardewValley.Object." + Enum.GetName(typeof(GiftId), (int)id);
-                HappyBirthdayMod.Instance.Monitor.Log($"Added gift with id: {uniqueID}",StardewModdingAPI.LogLevel.Debug);
+                HappyBirthdayMod.Instance.Monitor.Log($"Added gift with id: {uniqueID}",StardewModdingAPI.LogLevel.Trace);
 
                 if (RegisteredGifts.ContainsKey(uniqueID)) continue;
                 RegisteredGifts.Add(uniqueID, i);
